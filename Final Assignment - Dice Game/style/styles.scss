@@ -1,0 +1,198 @@
+// MIXIN'
+@mixin button-style($bg-color, $hover-color) {
+    padding: 10px 20px;
+    background: $bg-color;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background: darken($hover-color, 10%);
+    }
+}
+
+
+$color-tom-thumb: #485938;
+$color-pine-glade: #C7CD94;
+$color-norway: #93BF8E;
+$color-sea-nymph: #7CA6A0;
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('../images/background/battle-background.png') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: $color-tom-thumb;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+
+    .popup-content {
+        background: $color-pine-glade;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+
+        h2 {
+            margin: 0 0 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid $color-tom-thumb;
+            border-radius: 5px;
+        }
+
+        button {
+            @include button-style($color-tom-thumb, $color-tom-thumb);
+        }
+    }
+}
+
+.game-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.header {
+    grid-column: 1 / -1;
+    font-size: 2em;
+}
+
+.player-section {
+    grid-column: 1 / 2;
+
+    .player-info {
+        text-align: left;
+
+        h3 {
+            margin: 0 0 10px;
+        }
+
+        .health-bar {
+            background: $color-norway;
+            border: 2px solid $color-tom-thumb;
+            border-radius: 5px;
+            height: 20px;
+            width: 100%;
+            margin-bottom: 10px;
+            overflow: hidden;
+
+            .health {
+                height: 100%;
+                background: $color-sea-nymph;
+                width: 0%;
+            }
+        }
+
+        #player-die-images {
+            display: flex;
+            justify-content: space-around;
+
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        p {
+            margin: 5px 0;
+        }
+    }
+}
+
+.cpu-section {
+    grid-column: 2 / 3;
+
+    .cpu-info {
+        text-align: left;
+
+        h3 {
+            margin: 0 0 10px;
+        }
+
+        .health-bar {
+            background: $color-norway;
+            border: 2px solid $color-tom-thumb;
+            border-radius: 5px;
+            height: 20px;
+            width: 100%;
+            margin-bottom: 10px;
+            overflow: hidden;
+
+            .health {
+                height: 100%;
+                background: $color-sea-nymph;
+                width: 0%;
+            }
+        }
+
+        #cpu-die-images {
+            display: flex;
+            justify-content: space-around;
+
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        p {
+            margin: 5px 0;
+        }
+    }
+}
+
+.round-info {
+    grid-column: 1 / -1;
+    font-size: 1.5em;
+}
+
+.controls {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    button {
+        @include button-style($color-tom-thumb, $color-tom-thumb);
+    }
+}
+
+.winner-message {
+    grid-column: 1 / -1;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.faded {
+    opacity: 0.5;
+    pointer-events: none;
+}

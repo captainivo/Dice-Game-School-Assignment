@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+    <script type="module" src="script/main-script.js"></script>
+    <link rel="stylesheet" href="style/styles.css">
+</head>
+
+<body>
+    <div id="namePopup" class="popup">
+        <div class="popup-content">
+            <h2>Enter Your Name</h2>
+            <input type="text" id="playerNameInput" placeholder="Your Name">
+            <button onclick="submitName()">Submit</button>
+        </div>
+    </div>
+    <div class="game-wrapper">
+        <div class="header">Dice Game</div>
+        <div class="background-image"></div>
+        <div class="fixed-row">
+            <div id="player-die-images">
+                <img id="die0" src="images/dice-images/dice-six-faces-1.png" alt="An image of a die">
+                <img id="die1" src="images/dice-images/dice-six-faces-1.png" alt="An image of a die">
+            </div>
+            <div id="cpu-die-images">
+                <img id="die2" src="images/dice-images/dice-six-faces-1.png" alt="An image of a die">
+                <img id="die3" src="images/dice-images/dice-six-faces-1.png" alt="An image of a die">
+            </div>
+        </div>
+        <div class="player-info">
+            <h3 id="playerName">Player</h3>
+            <div class="health-bar">
+                <div id="player-health" class="health"></div>
+            </div>
+
+            <p id="player-roll"></p>
+            <p id="player-score"></p>
+            <p id="player-total-score"></p>
+        </div>
+        <div class="round-info">
+            <p id="round-display">Round: 1</p>
+        </div>
+        <div class="cpu-info">
+            <h3>Computer</h3>
+            <div class="health-bar">
+                <div id="computer-health" class="health"></div>
+            </div>
+            <p id="computer-roll"></p>
+            <p id="computer-score"></p>
+            <p id="computer-total-score"></p>
+        </div>
+        <button id="roll-button">Roll Dice</button>
+        <button id="reset-button">Reset Game</button>
+        <p id="winner-message"></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const namePopup = document.getElementById('namePopup');
+            const playerNameInput = document.getElementById('playerNameInput');
+            const playerNameElement = document.getElementById('playerName');
+
+            function submitName() {
+                const playerName = playerNameInput.value.trim();
+                if (playerName) {
+                    playerNameElement.textContent = playerName;
+                    namePopup.style.display = 'none';
+                }
+            }
+
+            window.submitName = submitName;
+
+            namePopup.style.display = 'flex';
+        });
+    </script>
+</body>
+
+</html>

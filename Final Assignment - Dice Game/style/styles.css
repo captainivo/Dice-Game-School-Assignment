@@ -1,0 +1,206 @@
+:root {
+  --tom-thumb: #485938;
+  --pine-glade: #C7CD94;
+  --norway: #93BF8E;
+  --sea-nymph: #7CA6A0;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.game-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1.5fr 200px 1fr;
+  gap: 5px;
+  grid-template-areas: "header header header" "background-image background-image background-image" "fixed-row fixed-row fixed-row" "player-info round-info cpu-info";
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  border: 2px solid var(--tom-thumb);
+  background-color: var(--pine-glade);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.background-image {
+  grid-area: background-image;
+  background-image: url("/images/background/battle-background.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px 10px 0 0;
+}
+
+.fixed-row {
+  display: flex;
+  grid-area: fixed-row;
+  height: 200px;
+  background-color: var(--norway);
+  border-radius: 0;
+}
+
+#player-die-images,
+#cpu-die-images {
+  flex: 1;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  max-width: 50%;
+  max-height: 50%;
+  object-fit: contain;
+  padding: 20px;
+}
+
+img {
+  max-width: 50%;
+  max-height: 50%;
+  object-fit: contain;
+  padding: 20px;
+}
+
+.player-info,
+.cpu-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.player-info {
+  grid-area: player-info;
+  background-color: var(--norway);
+  border-radius: 0;
+}
+.player-info .health-bar .health {
+  background-color: var(--tom-thumb);
+}
+
+.round-info {
+  grid-area: round-info;
+  background-color: var(--sea-nymph);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.cpu-info {
+  grid-area: cpu-info;
+  background-color: var(--norway);
+  border-radius: 0;
+}
+.cpu-info .health-bar .health {
+  background-color: var(--sea-nymph);
+}
+
+.header {
+  grid-area: header;
+  color: #fff;
+  padding: 10px;
+  font-size: 1.5em;
+  background-color: var(--tom-thumb);
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.health-bar {
+  background-color: #ddd;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100%;
+  height: 20px;
+  margin: 5px 0;
+}
+
+.health {
+  height: 100%;
+  width: 0;
+  transition: width 0.5s ease, background-color 0.5s ease;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--tom-thumb);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: var(--sea-nymph);
+}
+
+#results p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+#winner-message {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+.popup-content h2 {
+  margin: 0 0 10px;
+}
+.popup-content input {
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.popup-content button {
+  background-color: var(--tom-thumb);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+.popup-content button:hover {
+  background-color: var(--sea-nymph);
+}
+
+.faded {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=styles.css.map */
